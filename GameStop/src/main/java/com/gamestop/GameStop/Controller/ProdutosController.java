@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.gamestop.GameStop.Repository.ProdutosRepository;
+import com.gamestop.GameStop.Service.ProdutosService;
 import com.gamestop.GameStop.model.Produtos;
 
 
@@ -27,6 +28,11 @@ public class ProdutosController {
 	
 	@Autowired
 	private ProdutosRepository repository;
+	
+	@Autowired
+	private ProdutosService service;
+	
+	
 	
 	@GetMapping
 	public ResponseEntity<List<Produtos>> GetAll() {
@@ -50,7 +56,7 @@ public class ProdutosController {
 	
 	@PostMapping
 	public ResponseEntity<Produtos> post(@RequestBody Produtos produtos) {
-		return ResponseEntity.status(HttpStatus.CREATED).body(repository.save(produtos));
+		return ResponseEntity.status(HttpStatus.CREATED).body(service.cadastrarProduto(produtos));
 	}
 	
 	@PutMapping

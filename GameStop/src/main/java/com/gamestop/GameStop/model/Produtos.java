@@ -35,7 +35,11 @@ public class Produtos {
 	@NotNull
 	@URL
 	private String imagem;
-
+	
+	private long codigo;
+	
+	
+	
 	
 	@ManyToOne
 	@JsonIgnoreProperties("produtos")
@@ -88,6 +92,14 @@ public class Produtos {
 
 	public void setCategoria(Categoria categoria) {
 		this.categoria = categoria;
+	}
+
+	public long getCodigo() {
+		return codigo;
+	}
+
+	public void setCodigo(long codigo) {
+		this.codigo = codigo;
 	}
 
 	
